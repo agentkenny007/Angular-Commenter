@@ -1,0 +1,48 @@
+@import "bulma";
+
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -khtml-border-radius: $radius;
+    border-radius: $radius;
+}
+
+@mixin box-shadow($shadow) {
+    -webkit-box-shadow: $shadow;
+    -moz-box-shadow: $shadow;
+    -ms-box-shadow: $shadow;
+    box-shadow: $shadow;
+}
+
+@mixin transition($transition) {
+    -webkit-transition: $transition;
+    -moz-transition: $transition;
+    -o-transition: $transition;
+    transition: $transition;
+}
+
+.container {
+    font-size: 24px;
+    max-width: 650px;
+    margin: 25px auto;
+    text-align: center;
+    padding: 0 25px;
+    h3 {
+        margin-bottom: 10px;
+    }
+    img {
+        width: 100%;
+        max-width: 350px;
+        border-top: 1px solid;
+        border-bottom: 1px solid white;
+        @include border-radius(4px 4px 0 0);
+        @include box-shadow(0 5px 8px -4px);
+    }
+    button {
+        margin-bottom: 20px;
+    }
+    .error {
+        color: red;
+        font-size: 0.5em;
+    }
+}
