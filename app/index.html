@@ -3,13 +3,46 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Cool Project</title>
+    <title>Angular Commenter</title>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
   </head>
-  <body>
-    <div class="container">
-      <p>Welcome to your life.</p>
+  <body ng-app="app">
+    <div class="container" ng-controller="Controller">
+      <form name="Commenter" ng-submit="addComment(comment)">
+          <h3>Leave your comment...</h3>
+          <p class="control">
+              <span class="error" ng-show="Commenter.name.$error.required && Commenter.name.$dirty">Required.</span>
+              <input type="text" name="name" placeholder="Name" class="input" ng-model="comment.name" required>
+          </p>
+          <p class="control">
+              <span class="error" ng-show="Commenter.Email.$error.required && Commenter.email.$dirty">Required.</span>
+              <span class="error" ng-show="Commenter.Email.$error.email">Invalid email.</span>
+              <input type="email" name="Email" placeholder="Email address" class="input" ng-model="comment.email" required>
+          </p>
+          <p class="control">
+              <span class="error" ng-show="Commenter.url.$error.required && Commenter.url.$dirty">Required.</span>
+              <span class="error" ng-show="Commenter.url.$error.url">Invalid URL.</span>
+              <input type="url" name="url" placeholder="Website" class="input" ng-model="comment.url" required>
+          </p>
+          <p class="control">
+              <span class="error" ng-show="Commenter.message.$error.required && Commenter.message.$dirty">Required.</span>
+              <textarea name="message" placeholder="Message" class="textarea" ng-model="comment.msg" required></textarea>
+          </p>
+          <p class="control">
+              <button class="button">Submit Comment</button>
+          </p>
+      </form>
+      <hr>
+      <ul>
+          <li class="comment" ng-repeat="comment in comments" data-id="{{ comment._id }}">
+              <span class="name">{{ comment.name }}</span>
+              <span class="email">{{ comment.email }}</span>
+              <span class="website">{{ comment.url }}</span>
+              <span class="message">{{ comment.msg }}</span>
+              <button class="delete button" ng-click="deleteComment(comment._id)"></button>
+          </li>
+      </ul>
     </div>
     <script src="js/bundle.js"></script>
   </body>
