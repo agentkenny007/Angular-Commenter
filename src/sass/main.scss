@@ -21,6 +21,10 @@
     transition: $transition;
 }
 
+body {
+    text-shadow: 0 1px 1px;
+}
+
 .container {
     font-size: 24px;
     max-width: 650px;
@@ -44,5 +48,19 @@
     .error {
         color: red;
         font-size: 0.5em;
+    }
+    .comment {
+        text-align: right;
+        blockquote {
+            font-size: 1.4em;
+            text-align: left;
+            border-left: 4px solid;
+            padding-left: 15px;
+        }
+        .email {
+            display: block;
+            font-size: 0.6em;
+            text-transform: uppercase;
+        }
     }
 }
