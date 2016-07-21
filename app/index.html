@@ -12,8 +12,8 @@
       <form name="Commenter" ng-submit="addComment(comment)" ng-controller="FormController">
           <h3>Leave your comment...</h3>
           <p class="control">
-              <span class="error" ng-show="Commenter.name.$error.required && Commenter.name.$dirty">Required.</span>
-              <input type="text" name="name" placeholder="Name" class="input" ng-model="comment.name" required>
+              <span class="error">{{ error.name }}</span>
+              <input type="text" name="name" placeholder="Name" class="input" ng-model="comment.name" ng-keyup="validate(comment.name)" required>
           </p>
           <p class="control">
               <span class="error" ng-show="Commenter.Email.$error.required && Commenter.Email.$dirty">Required.</span>
