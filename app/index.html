@@ -9,14 +9,14 @@
   </head>
   <body ng-app="app">
     <div class="container" ng-controller="Controller">
-      <form name="Commenter" ng-submit="addComment(comment)">
+      <form name="Commenter" ng-submit="addComment(comment)" ng-controller="FormController">
           <h3>Leave your comment...</h3>
           <p class="control">
               <span class="error" ng-show="Commenter.name.$error.required && Commenter.name.$dirty">Required.</span>
               <input type="text" name="name" placeholder="Name" class="input" ng-model="comment.name" required>
           </p>
           <p class="control">
-              <span class="error" ng-show="Commenter.Email.$error.required && Commenter.email.$dirty">Required.</span>
+              <span class="error" ng-show="Commenter.Email.$error.required && Commenter.Email.$dirty">Required.</span>
               <span class="error" ng-show="Commenter.Email.$error.email">Invalid email.</span>
               <input type="email" name="Email" placeholder="Email address" class="input" ng-model="comment.email" required>
           </p>
@@ -27,7 +27,7 @@
           </p>
           <p class="control">
               <span class="error" ng-show="Commenter.message.$error.required && Commenter.message.$dirty">Required.</span>
-              <textarea name="message" placeholder="Message" class="textarea" ng-model="comment.msg" required></textarea>
+              <textarea name="message" placeholder="Comment message" class="textarea" ng-model="comment.msg" required></textarea>
           </p>
           <p class="control">
               <button class="button">Submit Comment</button>
@@ -36,10 +36,9 @@
       <hr>
       <ul>
           <li class="comment" ng-repeat="comment in comments" data-id="{{ comment._id }}">
-              <span class="name">{{ comment.name }}</span>
-              <span class="email">{{ comment.email }}</span>
-              <span class="website">{{ comment.url }}</span>
-              <span class="message">{{ comment.msg }}</span>
+              <blockquote class="message">{{ comment.msg }}</blockquote>
+              <span class="name">comment by <a href="{{ comment.url }}">{{ comment.name }}</a></span>
+              <a href="mailto:{{ comment.email }}" class="email">{{ comment.email }}</a>
               <button class="delete button" ng-click="deleteComment(comment._id)"></button>
           </li>
       </ul>
