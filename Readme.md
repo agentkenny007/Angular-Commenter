@@ -1,4 +1,4 @@
-# Angular Contact Form
+# Angular Comment Form
 
 Yay. More Angular. Collect comments. Validate them. Store them in the cloud. Yay, again.
 
